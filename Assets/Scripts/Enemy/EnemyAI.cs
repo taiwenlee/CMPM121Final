@@ -29,5 +29,11 @@ public class EnemyAI : MonoBehaviour
             agent.SetDestination(player.transform.position);
         }
 
+        // if enemy get to player, attack player
+        if (Vector3.Distance(transform.position, player.transform.position) < 1)
+        {
+            Debug.Log("Attack Player");
+        }
+
     }
 }
