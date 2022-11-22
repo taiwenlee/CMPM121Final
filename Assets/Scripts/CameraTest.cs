@@ -14,14 +14,16 @@ public class CameraTest : MonoBehaviour
     public float maxZoom;
     public float rotateSpeed;
 
+    [SerializeField, Range(1, 180)] private float upperLookLimit = 45f;
+    [SerializeField, Range(1, 180)] private float lowerLookLimit = 45f;
+
     private float scale = 1f;
 
     void LateUpdate()
     {
         float zoom = Input.GetAxis("Mouse ScrollWheel");
         float rotateX = Input.GetAxis("Mouse X");
-        float rotateY = Input.GetAxis("Mouse Y");
-
+        //float rotateY = Input.GetAxis("Mouse Y");
         // zoom limit
         scale -= zoom;
         if (scale < minZoom)
@@ -31,7 +33,7 @@ public class CameraTest : MonoBehaviour
 
         // Allows camera rotation, Quaternion is for rotations
         offset = Quaternion.AngleAxis(rotateX * rotateSpeed, Vector3.up) * offset;
-        offset = Quaternion.AngleAxis(rotateY * rotateSpeed * -1, Vector3.right) * offset;
+        //offset = Quaternion.AngleAxis(rotateY * rotateSpeed * -1, Vector3.right) * offset;
 
         // This line moves the camera with the ball
         transform.position = target.position + (offset * scale);
