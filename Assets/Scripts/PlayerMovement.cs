@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public List<Camera> Cameras;
     private CharacterController characterController;
     private PlayerInput playerInput;
 
@@ -16,10 +17,15 @@ public class PlayerMovement : MonoBehaviour
     private float movementX;
     private float movementY;
     private float originalStepOffSet;
+    private int index;
     private bool jumpPress = false;
+
+    Vector3 forward;
+    Vector3 right;
 
     private void Start()
     {
+        EnableCamera(0);
         characterController = GetComponent<CharacterController>();
         originalStepOffSet = characterController.stepOffset;
     }
@@ -34,10 +40,25 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Pressed jump");
         jumpPress = true; 
     }
+    private void EnableCamera(int n)
+    {
+        Cameras.ForEach(cam => cam.enabled = false);
+        Cameras[n].enabled = true;
+    }
     private void Update()
     {
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            EnableCamera(0);
+            index = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            EnableCamera(1);
+            index = 1;
+        }
+        forward = Cameras[index].transform.forward;
+        right = Cameras[index].transform.right;
         forward.y = 0;
         right.y = 0;
         forward = forward.normalized;
@@ -79,9 +100,7 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, playerRotation, rotationSpeed * Time.deltaTime);
         }
 
-
         //Moves the player
         characterController.Move(velocity * Time.deltaTime);
     }
-
 }
