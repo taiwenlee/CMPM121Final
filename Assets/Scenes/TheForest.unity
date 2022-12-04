@@ -6947,7 +6947,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cameras:
   - {fileID: 1860025499}
-  - {fileID: 1654853690}
   particle: {fileID: 1558577894}
   speed: 6
   jumpSpeed: 7

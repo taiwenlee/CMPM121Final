@@ -63,16 +63,16 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            EnableCamera(0);
-            index = 0;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            EnableCamera(1);
-            index = 1;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    EnableCamera(0);
+        //    index = 0;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    EnableCamera(1);
+        //    index = 1;
+        //}
         forward = Cameras[index].transform.forward;
         right = Cameras[index].transform.right;
         forward.y = 0;
