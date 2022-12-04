@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
@@ -9,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
 
     public float detectionRange = 20f;
+    public static bool PlayerDeadth = false;
 
     // attack cooldown (freezes enemy when on cooldown)
     public float cooldown = 10f;
@@ -61,8 +63,9 @@ public class EnemyAI : MonoBehaviour
         {
             cooldownTimer = cooldown;
             agent.SetDestination(transform.position);
+            PlayerDeadth = true;
             Time.timeScale = 0f;
-            //SceneManager.LoadScene("GameOverScreen");
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
