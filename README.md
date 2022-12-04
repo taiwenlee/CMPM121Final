@@ -20,8 +20,8 @@ NPC Chase Scene
 
 
 Polished / Game Ready:
-1. Created a 
+1. Implemented a player model for the npc instead of a capsule
 2. Dark setting with only the flashlight as the only light source
-3. Different skybox
-4. 
+3. Different skybox with lighting that matches it
+4. Object that goes with the particle system
 5. Dark forest environment
