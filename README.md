@@ -11,7 +11,7 @@ Light has a particle system to emit fire particle
 4. Tree1
 5. Tree2
 
-Controlable Character with the ability to switch first to third person camera that follows the player
+Controllable Character with a first camera that follows the player
 
 NPC Chase Scene
 1. NPC moves towards player
