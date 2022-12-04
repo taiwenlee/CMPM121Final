@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         forward = forward.normalized;
         right = right.normalized;
 
-        // Section that moves the camera based on where the current camera is pointing
+        // Section that moves the player based on where the current camera is pointing
         Vector3 forwardRelativeVerticalInput = movementY * forward;
         Vector3 rightRelativeVerticalInput = movementX * right;
         Vector3 move = forwardRelativeVerticalInput + rightRelativeVerticalInput;
