@@ -17,5 +17,7 @@ public class LighterPosition : MonoBehaviour
         offset = Quaternion.AngleAxis(rotateX * rotateSpeed, Vector3.up) * offset;
         transform.position = target.position + (offset * scale);
         transform.rotation = Quaternion.LookRotation(target.position - transform.position);
+        // rotate the lighter slightly to the left
+        transform.Rotate(0, -200, 0);
     }
 }
