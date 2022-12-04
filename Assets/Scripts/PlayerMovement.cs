@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public List<Camera> Cameras;
+    public ParticleSystem particle;
     private CharacterController characterController;
     private PlayerInput playerInput;
 
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private float originalStepOffSet;
     private int index;
     private bool jumpPress = false;
+    private bool firePress = true;
 
     Vector3 forward;
     Vector3 right;
@@ -39,6 +41,20 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Pressed jump");
         jumpPress = true; 
+    }
+    private void OnFire()
+    {
+        Debug.Log("Pressed fire");
+        if(firePress == false)
+        {
+            firePress = true;
+            particle.Play();
+        }
+        else if (firePress == true)
+        {
+            firePress = false;
+            particle.Stop();
+        }
     }
     private void EnableCamera(int n)
     {
@@ -73,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
         move.Normalize();
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
-
         //Jump section
         if(characterController.isGrounded)
         {

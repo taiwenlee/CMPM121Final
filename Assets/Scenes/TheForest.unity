@@ -1699,7 +1699,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -6948,6 +6948,7 @@ MonoBehaviour:
   Cameras:
   - {fileID: 1860025499}
   - {fileID: 1654853690}
+  particle: {fileID: 1558577894}
   speed: 6
   jumpSpeed: 7
   rotationSpeed: 650
