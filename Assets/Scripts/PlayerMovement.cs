@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public List<Camera> Cameras;
     public ParticleSystem particle;
+    public Light particleLight;
     private CharacterController characterController;
     private PlayerInput playerInput;
 
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float originalStepOffSet;
     private int index;
     private bool jumpPress = false;
-    private bool firePress = true;
+    private bool firePress = false;
 
     Vector3 forward;
     Vector3 right;
@@ -40,20 +41,34 @@ public class PlayerMovement : MonoBehaviour
     private void OnJump()
     {
         Debug.Log("Pressed jump");
-        jumpPress = true; 
+        jumpPress = true;
     }
     private void OnFire()
     {
         Debug.Log("Pressed fire");
-        if(firePress == false)
+        if (firePress == false)
         {
             firePress = true;
             particle.Play();
+            particleLight.enabled = true;
+            // scare enemies
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.GetComponent<EnemyAI>().isScared = true;
+            }
         }
         else if (firePress == true)
         {
             firePress = false;
             particle.Stop();
+            particleLight.enabled = false;
+            // stop scaring enemies
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.GetComponent<EnemyAI>().isScared = false;
+            }
         }
     }
     private void EnableCamera(int n)
@@ -90,11 +105,11 @@ public class PlayerMovement : MonoBehaviour
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
         //Jump section
-        if(characterController.isGrounded)
+        if (characterController.isGrounded)
         {
             characterController.stepOffset = originalStepOffSet;
             ySpeed = -0.5f;
-            if(jumpPress)
+            if (jumpPress)
             {
                 ySpeed = jumpSpeed;
                 jumpPress = false;
@@ -108,12 +123,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 velocity = move * magnitude;
         velocity.y = ySpeed;
 
-        //Rotates Player model to move direction
+        /*Rotates Player model to move direction
         if (move != Vector3.zero)
         {
             Quaternion playerRotation = Quaternion.LookRotation(move, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, playerRotation, rotationSpeed * Time.deltaTime);
-        }
+        }*/
 
         //Moves the player
         characterController.Move(velocity * Time.deltaTime);

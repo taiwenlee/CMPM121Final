@@ -68,10 +68,4 @@ public class EnemyAI : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
     }
-
-    // sets isScared
-    public void set_isScare(bool scared)
-    {
-        isScared = scared;
-    }
 }

@@ -41,7 +41,7 @@ public class Lighter : MonoBehaviour
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
-                enemy.GetComponent<EnemyAI>().set_isScare(true);
+                enemy.GetComponent<EnemyAI>().isScared = true;
             }
             Invoke("StopFlame", duration);
         }
@@ -57,7 +57,7 @@ public class Lighter : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
-            enemy.GetComponent<EnemyAI>().set_isScare(false);
+            enemy.GetComponent<EnemyAI>().isScared = false;
         }
     }
 }
