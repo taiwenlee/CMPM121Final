@@ -5,11 +5,11 @@ Final Project for CMPM121 (UCSC)
 Light has a particle system to emit fire particle
 
 5 imported object:
-Lighter
-Ghost enemy model
-Rocks
-Tree1
-Tree2
+1. Lighter
+2. Ghost enemy model
+3. Rocks
+4. Tree1
+5. Tree2
 
 Controlable Character with the ability to switch first to third person camera that follows the player
 
