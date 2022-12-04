@@ -61,7 +61,8 @@ public class EnemyAI : MonoBehaviour
         {
             cooldownTimer = cooldown;
             agent.SetDestination(transform.position);
-            //player.GetComponent<PlayerHealth>().TakeDamage(10);
+            Time.timeScale = 0f;
+            //SceneManager.LoadScene("GameOverScreen");
         }
     }
 }
