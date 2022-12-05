@@ -15,7 +15,8 @@ Controllable Character with a first camera that follows the player
 
 NPC Chase Scene
 1. NPC moves towards player
-2. 
+2. -if NPC catch player, player dies
+   -if lighter is on, NPC runs away from player
 3. Trees obstructs player/npc movement
 
 
