@@ -8,19 +8,12 @@ public class GameOverScript : MonoBehaviour
 {
     public void Setup()
     {
-        if (EnemyAI.PlayerDeadth = true){
+        if (EnemyAI.PlayerDeadth == true){
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             UnityEngine.Cursor.visible = true;
             gameObject.SetActive(true);
         } else{
             gameObject.SetActive(false);
         }
-    }
-
-    public void RestartButton()
-    {
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-        UnityEngine.Cursor.visible = true;
-        SceneManager.LoadScene("Theforest");
     }
 }
